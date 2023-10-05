@@ -1,6 +1,6 @@
 # Delta Sharing Download as CSV
 
-Sample app to download a Delta Sharing table as a CSV file.
+Sample app to download a Delta Sharing table(s) as a CSV file.
 
 
 ## Prerequisites
