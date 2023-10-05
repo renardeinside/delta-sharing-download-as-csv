@@ -31,3 +31,4 @@ build/
 
 # add vscode
 .vscode/
+.ruff_cache

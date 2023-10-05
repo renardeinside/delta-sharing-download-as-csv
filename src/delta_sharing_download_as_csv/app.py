@@ -26,13 +26,21 @@ uploader_placeholder = st.empty()
 def uploader_callback():
     if st.session_state.get("profile_file_uploader") is not None:
         uploaded_file = st.session_state["profile_file_uploader"]
-        raw_payload = StringIO(uploaded_file.getvalue().decode("utf-8")).read()
-        profile = DeltaSharingProfile.from_json(raw_payload)
-        client = SharingClient(profile)
-        with uploader_placeholder, st.spinner("Loading available shares and tables..."):
-            all_tables = client.list_all_tables()
-            st.session_state["all_tables"] = all_tables
-            st.session_state["profile"] = profile
+        try:
+            raw_payload = StringIO(uploaded_file.getvalue().decode("utf-8")).read()
+            profile = DeltaSharingProfile.from_json(raw_payload)
+            client = SharingClient(profile)
+            with uploader_placeholder, st.spinner("Loading available shares and tables..."):
+                all_tables = client.list_all_tables()
+                st.session_state["all_tables"] = all_tables
+                st.session_state["profile"] = profile
+        except Exception as e:
+            st.toast(
+                body=f"""
+                     Exception while loading the profile file: {e}. 
+                     Please remove the file and upload a valid one.""",
+                icon="🚨",
+            )
 
 
 if "profile" not in st.session_state:
