@@ -1,0 +1,33 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Distribution / packaging
+dist/
+build/
+*.egg-info/
+
+# IDEs and editors
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+
+# Local development settings
+.env
+.env.local
+.env.*.local
+
+# Logs and databases
+*.log
+*.sqlite3
+*.db
+
+.python-version
+
+# add macos specific files
+.DS_Store
+
+# add vscode
+.vscode/
